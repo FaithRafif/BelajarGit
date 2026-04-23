@@ -59,7 +59,6 @@ public class GameManager : MonoBehaviour
             else if (currentState == GameState.Paused) UpdateState(GameState.Playing);
         }
 
-        
         if (currentState == GameState.GameOver && Input.GetKeyDown(KeyCode.Space))
         {
             RestartGame();
@@ -76,26 +75,16 @@ public class GameManager : MonoBehaviour
         Debug.Log("Playing Game");
     }
 
-    public void PauseGame()
-    {
-        Time.timeScale = 0f;
-        Debug.Log("Paused Game");
-    }
-
     private void HandleGameOver()
     {
         Time.timeScale = 0f;
         Debug.Log("Game Over Tekan space");
     }
 
-    public void Resume(){
-        UpdateState(GameState.Playing);
-    }
-
-  
-    public void GameOver()
+    public void PauseGame()
     {
-        UpdateState(GameState.GameOver);
+        Time.timeScale = 0f;
+        Debug.Log("Paused Game");
     }
 
     public void RestartGame()
@@ -103,7 +92,16 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    
+
+    public void Resume(){
+        UpdateState(GameState.Playing);
+    }
+
+    public void GameOver()
+    {
+        UpdateState(GameState.GameOver);
+    }
+
     public void StartGame() => UpdateState(GameState.Playing);
     public void Paused() => UpdateState(GameState.Paused);
     public void ResumeGame() => UpdateState(GameState.Playing);
