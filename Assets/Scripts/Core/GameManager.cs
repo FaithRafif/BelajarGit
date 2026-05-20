@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
     
 
     private UnityEvent<GameState> OnStateChanged ;
-
+    private GameObject panelPaused; 
+    private GameObject panelGameOver;
     void Awake()
     {
         if (Instance == null) 
